@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 class HomeSettings: ObservableObject {
     @Published var roofAreaInt: Int = 0
@@ -31,8 +32,12 @@ struct ContentView: View {
                 )
             )
         }
+        .onAppear {
+            CLLocationManager().requestWhenInUseAuthorization()
+        }
     }
 }
+    
 
 
 
