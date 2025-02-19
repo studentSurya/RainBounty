@@ -19,29 +19,71 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Hello, World!")
+                HStack {
+                    NavigationLink(destination: Text("Historical Harvest View")) {
+                        Text("Historical Rain Harvest")
+                            .frame(width: 150, height: 150)
+                            .font(.title)
+                            .bold(true)
+                            .foregroundColor(.white)
+                            .background(.blue)
+                            .cornerRadius(10)
+                            .shadow(radius: 5)
+                    }
+                    .padding(7)
+                    NavigationLink(destination: Text("Forecasted Rain Harvest View")) {
+                        Text("Forecasted Rain Harvest")
+                            .frame(width: 150, height: 150)
+                            .font(.title)
+                            .bold(true)
+                            .foregroundColor(.white)
+                            .background(.green)
+                            .cornerRadius(10)
+                            .shadow(radius: 5)
+                    }
+                    .padding(7)
+                }
+                HStack {
+                    NavigationLink(destination: Text("Learn more about Rain Harvest View")) {
+                        Text("Learn \nMore")
+                            .frame(width: 150, height: 150)
+                            .font(.title)
+                            .bold(true)
+                            .foregroundColor(.white)
+                            .background(.orange)
+                            .cornerRadius(10)
+                            .shadow(radius: 5)
+                    }
+                    .padding(7)
+                    NavigationLink(destination: Text("Local Rain Harvest Resources")) {
+                        Text("Local Rain Harvest Resources")
+                            .frame(width: 150, height: 150)
+                            .font(.title)
+                            .bold(true)
+                            .foregroundColor(.white)
+                            .background(.cyan)
+                            .cornerRadius(10)
+                            .shadow(radius: 5)
+                    }
+                    .padding(7)
+                }
             }
             .navigationBarItems(
                 trailing: NavigationLink(
                     destination:
                         SettingsView()
-                        .environmentObject(gblHomeSettings),
-                    label: {
+                        .environmentObject(gblHomeSettings)) {
                         Image(systemName: "gear")
+                            .frame(width: 50, height: 50)
                     }
                 )
-            )
+            
         }
         .onAppear {
             CLLocationManager().requestWhenInUseAuthorization()
         }
     }
 }
-    
-
-
-
-
 
 #Preview {
     ContentView()

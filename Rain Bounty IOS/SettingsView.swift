@@ -10,8 +10,9 @@ import MapKit
 struct SettingsView: View {
     @EnvironmentObject var gblHomeSettings: HomeSettings
     
-    @AppStorage("uiStateWaterTankSizeStr") var uiStateWaterTankSizeStr: String = ""
-    @AppStorage("uiStateWaterCostUsdStr") var uiStateWaterCostUsdStr: String = ""
+    @AppStorage("uiStateWaterTankSizeStr") var uiStateWaterTankSizeStr: String = "100"
+    @AppStorage("uiStateWaterCostUsdStr") var uiStateWaterCostUsdStr: String = "2.38"
+    @AppStorage("uiharvestEfficiencyStr") var uiharvestEfficiencyStr: String = "0.75"
     
     @AppStorage("roofAreaInt") var roofAreaInt: Int = 0
     @AppStorage("gardenAreaInt") var gardenAreaInt: Int = 0
@@ -20,6 +21,10 @@ struct SettingsView: View {
     
     @AppStorage("homeLatitude") var homeLatitude: Double = 0.0
     @AppStorage("homeLongitude") var homeLongitude: Double = 0.0
+    
+    
+    @AppStorage("harvestEfficiencyDouble") var harvestEfficiencyDouble: Double = 0.75
+    
     
     @State private var cameraPosition: MapCameraPosition = .userLocation(fallback: .automatic)
     @State private var mapSelection: MKMapItem? = nil
@@ -142,6 +147,7 @@ struct SettingsView: View {
                     
                     Text(" gal")
                         .frame(width:40, height:nil, alignment: .trailing)
+
                 }
             } //end-Section
             
@@ -165,6 +171,27 @@ struct SettingsView: View {
                     
                     Text(" usd")
                         .frame(width:40, height:nil, alignment: .trailing)
+                }
+            }
+            
+            Section (header: Text("Advanced settings"),
+                     footer: Text("Use these settings to customize your water harvesting and usage simulation."))
+                {
+                
+                //Water Cost settings
+                HStack{
+                    Text("Rainwater harvest efficiency")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .multilineTextAlignment(.leading)
+                    TextField("", text: $uiharvestEfficiencyStr)
+                        .keyboardType(.decimalPad)
+                        .textFieldStyle(.roundedBorder)
+                        .frame(width: 100, height: nil, alignment: .trailing)
+                        .multilineTextAlignment(.trailing)
+                        .onChange(of: uiharvestEfficiencyStr) {
+                            harvestEfficiencyDouble = Double(uiharvestEfficiencyStr) ?? 0.75
+                        }
+                    
                 }
             }
         
