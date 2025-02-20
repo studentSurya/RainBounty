@@ -20,7 +20,7 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 HStack {
-                    NavigationLink(destination: Text("Historical Harvest View")) {
+                    NavigationLink(destination: HistoricalRainHarvestView()) {
                         Text("Historical Rain Harvest")
                             .frame(width: 150, height: 150)
                             .font(.title)
@@ -84,6 +84,8 @@ struct ContentView: View {
         }
     }
 }
+
+
 
 #Preview {
     ContentView()

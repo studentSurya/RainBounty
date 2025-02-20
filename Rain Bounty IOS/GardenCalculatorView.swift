@@ -19,11 +19,6 @@ struct GardenCalculatorView: View {
         Form{
             Section (header: Text("Garden Size"), footer: Text("This data allows us to estimate your garden/lawn irrigation needs based of your garden/lawn area."))
             {
-               // Toggle(isOn: $uiStateGardenSizeToggleOn, label: {Text("Enter Garden Area directly")})
-               //     .onChange(of: uiStateGardenSizeToggleOn) {
-               //         computeGardenArea()
-               //     }
-                
                 Picker("Garden area options?", selection: $uiStateGardenSizeToggleOn)
                 {
                     Text("Direct").tag(true)
