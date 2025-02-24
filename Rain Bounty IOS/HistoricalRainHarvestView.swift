@@ -26,86 +26,148 @@ struct HistoricalRainHarvestView: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                let lastYear = Calendar.current.component(.year, from: Date()) - 1
-                
-                Slider(
-                    value: Binding(get: {
-                        self.waterTankSize
-                    }, set: { (newVal) in
-                        self.waterTankSize = newVal
-                        self.waterTankSliderChanged()
-                    }),
-                    in: 0...3000,
-                    step: 50
-                ) {
-                    Text("Tank size (gal)")
-                } minimumValueLabel: {
-                    Text("0")
-                } maximumValueLabel: {
-                    Text("3000")
-                }
-                .padding(10)
-                
-                Text("Tank Size (gal) \(waterTankSize, specifier: "%.1f")")
-                    .padding()
+            ScrollView (.vertical) {
+                VStack {
+                    let lastYear = Calendar.current.component(.year, from: Date()) - 1
                     
-
-                if (self.rain_water_collection_data != nil) {
-                    // Background Gradient
-                    Chart {
-                        let calendar = Calendar.autoupdatingCurrent
-                        
-                        //Tank water size Chart
-                        ForEach(self.rain_water_collection_data!.weeklyRainCollectionData) { dataPoint in
-                            LineMark(
-                                x: .value("Week", calendar.date(from:DateComponents( weekOfYear: dataPoint.weekNumber, yearForWeekOfYear: lastYear))!, unit: .weekOfYear),
-                                y: .value("Tank water", dataPoint.tankWater)
-                            )
-                            .foregroundStyle(.blue)
-                        }
-                        
-                       
-                        ForEach(self.rain_water_collection_data!.weeklyRainCollectionData) { dataPoint in
-                            BarMark(
-                                x: .value("Week", calendar.date(from:DateComponents( weekOfYear: dataPoint.weekNumber, yearForWeekOfYear: lastYear))!, unit: .weekOfYear),
-                                y: .value("Rain Collection", dataPoint.rainCollection)
-                            )
-                            .foregroundStyle(dataPoint.rainFall > 100 ? .green : .red)
-                            //.chartYAxis(axis: .hidden) // Hide the volume y-axis
-                        }
+                    Slider(
+                        value: Binding(get: {
+                            self.waterTankSize
+                        }, set: { (newVal) in
+                            self.waterTankSize = newVal
+                            self.waterTankSliderChanged()
+                        }),
+                        in: 0...3000,
+                        step: 50
+                    ) {
+                        Text("Tank size (gal)")
+                    } minimumValueLabel: {
+                        Text("0")
+                    } maximumValueLabel: {
+                        Text("3000")
                     }
-                    .chartXAxis {
-                        AxisMarks(values: .stride(by: .month, count: 2)) { value in
-                            if let date = value.as(Date.self) {
-                                let month = Calendar.current.component(.month, from: date)
-                                switch month {
-                                default:
-                                    AxisValueLabel(format: .dateTime.month())
-                                }
-                            }
-                            AxisGridLine()
-                            AxisTick()
-                        }
-                    }
-                    .chartYAxis {
-                        AxisMarks(values: .automatic(desiredCount: 5))
-                    }
-                    .onAppear() {
-                        // Do nothing
-                    }
-                    .padding()
+                    .padding(.horizontal, 10)
                     
-                    Text(verbatim: "Rain Collection and Storage trend in year \(lastYear)")
+                    Text("Tank Size (gal) \(waterTankSize, specifier: "%.1f")")
                         .padding()
+                    
+                    
+                    if (self.rain_water_collection_data != nil) {
+                        // Background Gradient
+                        Chart {
+                            let calendar = Calendar.autoupdatingCurrent
+                            
+                            //Tank water size Chart
+                            ForEach(self.rain_water_collection_data!.weeklyRainCollectionData) { dataPoint in
+                                LineMark(
+                                    x: .value("Week", calendar.date(from:DateComponents( weekOfYear: dataPoint.weekNumber, yearForWeekOfYear: lastYear))!, unit: .weekOfYear),
+                                    y: .value("Tank water", dataPoint.tankWater)
+                                )
+                                .foregroundStyle(.blue)
+                            }
+                            
+                            
+                            ForEach(self.rain_water_collection_data!.weeklyRainCollectionData) { dataPoint in
+                                BarMark(
+                                    x: .value("Week", calendar.date(from:DateComponents( weekOfYear: dataPoint.weekNumber, yearForWeekOfYear: lastYear))!, unit: .weekOfYear),
+                                    y: .value("Rain Collection", dataPoint.rainCollection)
+                                )
+                                .foregroundStyle(.green)
+                                //.chartYAxis(axis: .hidden) // Hide the volume y-axis
+                            }
+                        }
+                        .frame(width: .infinity, height: 400, alignment: .center )
+                        .chartForegroundStyleScale(["Rain Collection": Color.green, "Tank water": Color.blue])
+                        .chartLegend(.visible)
+                        .chartLegend(position: .bottom, alignment: .bottomLeading)
+                        .chartXAxis {
+                            AxisMarks(values: .stride(by: .month, count: 2)) { value in
+                                if let date = value.as(Date.self) {
+                                    let month = Calendar.current.component(.month, from: date)
+                                    switch month {
+                                    default:
+                                        AxisValueLabel(format: .dateTime.month())
+                                    }
+                                }
+                                AxisGridLine()
+                                AxisTick()
+                            }
+                        }
+                        .chartYAxis {
+                            AxisMarks(values: .automatic(desiredCount: 5))
+                        }
+                        .onAppear() {
+                            // Do nothing
+                        }
+                        .padding()
+                        
+                        Text(verbatim: "Rain Collection and Storage trend in year \(lastYear)")
+                            .padding()
+                        VStack {
+                            let valueWidth = 70.0 //.infinity
+                            
+                            HStack {
+                                Text("# of Weeks watered with rain or harvested rainwater")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
 
-                } else {
-                    Text(progressMessage)
-                        .font(.title)
-                } //end if-else
-            } //end VStack
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+                                Text("\(self.rain_water_collection_data!.numberOfWeeksWateredByRainwater)")
+                                    .frame(maxWidth: valueWidth, alignment: .trailing)
+                                    .bold(true)
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.bottom, 5)
 
+                            /*
+                             HStack {
+                             Text("Rain collected on garden (gal)")
+                             .frame(maxWidth: .infinity, alignment: .leading)
+
+                             Text("\(self.rain_water_collection_data!.totalRainOnGarden, specifier: "%.0f")")
+                             .frame(maxWidth: valueWidth, alignment: .trailing)
+                             }
+                             */
+
+                            HStack {
+                                Text("Harvested water used for irrigation (gal)")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                                Text("\(self.rain_water_collection_data!.totalHarvestedRainwaterUsed, specifier: "%.0f")")
+                                    .frame(maxWidth: valueWidth, alignment: .trailing)
+                                    .bold(true)
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.bottom, 5)
+
+                            HStack {
+                                Text("Personal water used for irrigation (gal)")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                                Text("\(self.rain_water_collection_data!.totalPersonalWaterUsed, specifier: "%.0f")")
+                                    .frame(maxWidth: valueWidth, alignment: .trailing)
+                                    .bold(true)
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.bottom, 5)
+
+                            HStack {
+                                Text("Weekly water req (gal)")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                                Text("\(self.rain_water_collection_data!.weeklyWaterRequirement, specifier: "%.0f")")
+                                    .frame(maxWidth: valueWidth, alignment: .trailing)
+                                    .bold(true)
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.bottom, 5)
+                        }
+                        
+                    } else {
+                        Text(progressMessage)
+                            .font(.title)
+                    } //end if-else
+                } //end VStack
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+            } //scroll view
         }//zstack
         .onAppear() {
             self.waterTankSize = Double(self.waterTankSizeInt)

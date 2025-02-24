@@ -73,10 +73,10 @@ struct ContentView: View {
                     destination:
                         SettingsView()
                         .environmentObject(gblHomeSettings)) {
-                        Image(systemName: "gear")
-                            .frame(width: 50, height: 50)
-                    }
-                )
+                            Image(systemName: "gear")
+                                .frame(width: 50, height: 50)
+                        }
+            )
             
         }
         .onAppear {
