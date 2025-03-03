@@ -20,7 +20,7 @@ class RainwaterHarvestUtil {
         case invalidResponse
         case invalidData
     }
-
+    
     struct WeeklyRainwaterCollectionData : Identifiable {
         var id: UUID
         var weekNumber : Int
@@ -33,7 +33,7 @@ class RainwaterHarvestUtil {
         var personalWaterUsage : Double
     }
 
-    struct RainWaterCollectionData {
+    struct RainWaterCollectionSummary {
         var weeklyRainCollectionData : [WeeklyRainwaterCollectionData]
         var gardenSize: Double
         var weeklyWaterRequirement: Double
@@ -72,11 +72,17 @@ class RainwaterHarvestUtil {
         return rainfallData.daily.rain_sum
     }
     
-    static func calculateRainCollectionTrend(daily_rain_data: [Double], garden_size: Double, roof_size: Double, tank_size: Double, harvest_efficiency: Double ) -> RainWaterCollectionData {
+    static func calculateRainCollectionTrend(
+        daily_rain_data: [Double],
+        garden_size: Double,
+        roof_size: Double,
+        tank_size: Double,
+        harvest_efficiency: Double,
+        calculateWeeklyData: Bool) -> RainWaterCollectionSummary {
         var tank_water = 0.0
         let water_needed_for_garden = garden_size * 0.623
 
-        var rain_data = RainWaterCollectionData(
+        var rain_data = RainWaterCollectionSummary(
             weeklyRainCollectionData: [WeeklyRainwaterCollectionData](),
             gardenSize: garden_size,
             weeklyWaterRequirement: water_needed_for_garden,
@@ -86,14 +92,14 @@ class RainwaterHarvestUtil {
             totalPersonalWaterUsed: 0.0,
             totalHarvestedRainwaterUsed:0.0,
             roofSize: roof_size)
-        
-        let weekly_rain_data = daily_rain_data.chunks(7)
+            let chunk_size = calculateWeeklyData ? 7 : 1;
+            let chunked_data = daily_rain_data.chunks(chunk_size)
         var weekly_rain = [Double]();
 
-        for week in weekly_rain_data
+        for chunk in chunked_data
         {
             var rain_for_week = 0.0
-            for daily_rain_value in week
+            for daily_rain_value in chunk
             {
                 rain_for_week = rain_for_week + daily_rain_value
             }

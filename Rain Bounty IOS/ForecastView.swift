@@ -1,13 +1,13 @@
 //
-//  HistoricalRainHarvestView.swift
+//  ForecastView.swift
 //  Rain Bounty IOS
 //
-//  Created by Surya Swaminathan on 2/18/25.
+//  Created by Surya Swaminathan on 2/23/25.
 //
 import SwiftUI
 import Charts
 
-struct HistoricalRainHarvestView: View {
+struct ForecastView: View {
     @AppStorage("roofAreaInt") var roofAreaInt: Int = 0
     @AppStorage("gardenAreaInt") var gardenAreaInt: Int = 0
     @AppStorage("waterTankSizeInt") var waterTankSizeInt: Int = 100
@@ -21,14 +21,14 @@ struct HistoricalRainHarvestView: View {
     
     @State private var waterTankSize: Double = 0.0
     @State private var daily_rain_data: [Double] = []
-    @State private var rain_water_collection_summary : RainwaterHarvestUtil.RainWaterCollectionSummary? = nil
+    @State private var rain_water_collection_data : RainwaterHarvestUtil.RainWaterCollectionSummary? = nil
     @State private var progressMessage: String = "Initializing..."
     
     var body: some View {
         ZStack {
             ScrollView (.vertical) {
                 VStack {
-                    let lastYear = Calendar.current.component(.year, from: Date()) - 1
+                    let year = Calendar.current.component(.year, from: Date())
                     
                     Slider(
                         value: Binding(get: {
@@ -52,24 +52,24 @@ struct HistoricalRainHarvestView: View {
                         .padding()
                     
                     
-                    if (self.rain_water_collection_summary != nil) {
+                    if (self.rain_water_collection_data != nil) {
                         // Background Gradient
                         Chart {
                             let calendar = Calendar.autoupdatingCurrent
                             
                             //Tank water size Chart
-                            ForEach(self.rain_water_collection_summary!.weeklyRainCollectionData) { dataPoint in
+                            ForEach(self.rain_water_collection_data!.weeklyRainCollectionData) { dataPoint in
                                 LineMark(
-                                    x: .value("Week", calendar.date(from:DateComponents( weekOfYear: dataPoint.weekNumber, yearForWeekOfYear: lastYear))!, unit: .weekOfYear),
+                                    x: .value("Week", calendar.date(from:DateComponents( weekOfYear: dataPoint.weekNumber, yearForWeekOfYear: year))!, unit: .weekOfYear),
                                     y: .value("Tank water", dataPoint.tankWater)
                                 )
                                 .foregroundStyle(.blue)
                             }
                             
                             
-                            ForEach(self.rain_water_collection_summary!.weeklyRainCollectionData) { dataPoint in
+                            ForEach(self.rain_water_collection_data!.weeklyRainCollectionData) { dataPoint in
                                 BarMark(
-                                    x: .value("Week", calendar.date(from:DateComponents( weekOfYear: dataPoint.weekNumber, yearForWeekOfYear: lastYear))!, unit: .weekOfYear),
+                                    x: .value("Week", calendar.date(from:DateComponents( weekOfYear: dataPoint.weekNumber, yearForWeekOfYear: year))!, unit: .weekOfYear),
                                     y: .value("Rain Collection", dataPoint.rainCollection)
                                 )
                                 .foregroundStyle(.green)
@@ -81,12 +81,12 @@ struct HistoricalRainHarvestView: View {
                         .chartLegend(.visible)
                         .chartLegend(position: .bottom, alignment: .bottomLeading)
                         .chartXAxis {
-                            AxisMarks(values: .stride(by: .month, count: 2)) { value in
+                            AxisMarks(values: .stride(by: .day, count: 2)) { value in
                                 if let date = value.as(Date.self) {
-                                    let month = Calendar.current.component(.month, from: date)
-                                    switch month {
+                                    let day = Calendar.current.component(.day, from: date)
+                                    switch day {
                                     default:
-                                        AxisValueLabel(format: .dateTime.month())
+                                        AxisValueLabel(format: .dateTime.day().month())
                                     }
                                 }
                                 AxisGridLine()
@@ -101,7 +101,7 @@ struct HistoricalRainHarvestView: View {
                         }
                         .padding()
                         
-                        Text(verbatim: "Rain Collection and Storage trend in year \(lastYear)")
+                        Text(verbatim: "Rain Collection and Storage trend in the next two weeks")
                             .padding()
                         VStack {
                             let valueWidth = 70.0 //.infinity
@@ -110,7 +110,7 @@ struct HistoricalRainHarvestView: View {
                                 Text("# of Weeks watered with rain or harvested rainwater")
                                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                                Text("\(self.rain_water_collection_summary!.numberOfWeeksWateredByRainwater)")
+                                Text("\(self.rain_water_collection_data!.numberOfWeeksWateredByRainwater)")
                                     .frame(maxWidth: valueWidth, alignment: .trailing)
                                     .bold(true)
                             }
@@ -131,7 +131,7 @@ struct HistoricalRainHarvestView: View {
                                 Text("Harvested water used for irrigation (gal)")
                                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                                Text("\(self.rain_water_collection_summary!.totalHarvestedRainwaterUsed, specifier: "%.0f")")
+                                Text("\(self.rain_water_collection_data!.totalHarvestedRainwaterUsed, specifier: "%.0f")")
                                     .frame(maxWidth: valueWidth, alignment: .trailing)
                                     .bold(true)
                             }
@@ -142,7 +142,7 @@ struct HistoricalRainHarvestView: View {
                                 Text("Personal water used for irrigation (gal)")
                                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                                Text("\(self.rain_water_collection_summary!.totalPersonalWaterUsed, specifier: "%.0f")")
+                                Text("\(self.rain_water_collection_data!.totalPersonalWaterUsed, specifier: "%.0f")")
                                     .frame(maxWidth: valueWidth, alignment: .trailing)
                                     .bold(true)
                             }
@@ -153,7 +153,7 @@ struct HistoricalRainHarvestView: View {
                                 Text("Weekly water req (gal)")
                                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                                Text("\(self.rain_water_collection_summary!.weeklyWaterRequirement, specifier: "%.0f")")
+                                Text("\(self.rain_water_collection_data!.weeklyWaterRequirement, specifier: "%.0f")")
                                     .frame(maxWidth: valueWidth, alignment: .trailing)
                                     .bold(true)
                             }
@@ -179,11 +179,11 @@ struct HistoricalRainHarvestView: View {
         Task {
             print("Fetch Rain data")
             do {
-                self.daily_rain_data = try await RainwaterHarvestUtil.getRain(latitude: self.homeLatitude, longitude: self.homeLongitude, getForecastData: false)
+                self.daily_rain_data = try await RainwaterHarvestUtil.getRain(latitude: self.homeLatitude, longitude: self.homeLongitude, getForecastData: true)
                 waterTankSliderChanged()
             } catch let error {
                 print("Error fetching rain data! \(error)")
-                self.rain_water_collection_summary = nil
+                self.rain_water_collection_data = nil
                 progressMessage = "Error fetching rain data! Sorry for the inconvenience. Please retry after some time"
             }
         }
@@ -191,13 +191,13 @@ struct HistoricalRainHarvestView: View {
     
     func waterTankSliderChanged() {
         print("Slider value changed to \(waterTankSize)")
-        self.rain_water_collection_summary = RainwaterHarvestUtil.calculateRainCollectionTrend(
+        self.rain_water_collection_data = RainwaterHarvestUtil.calculateRainCollectionTrend(
             daily_rain_data: self.daily_rain_data,
             garden_size: Double(self.gardenAreaInt),
             roof_size: Double(self.roofAreaInt),
             tank_size: self.waterTankSize,
             harvest_efficiency: self.harvestEfficiencyDouble,
-            calculateWeeklyData: true)
+            calculateWeeklyData: false)
     }
 
 }

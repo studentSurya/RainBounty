@@ -23,7 +23,7 @@ struct ContentView: View {
                     NavigationLink(destination: HistoricalRainHarvestView()) {
                         Text("Historical Rain Harvest")
                             .frame(width: 150, height: 150)
-                            .font(.title)
+                            .font(.title2)
                             .bold(true)
                             .foregroundColor(.white)
                             .background(.blue)
@@ -31,10 +31,10 @@ struct ContentView: View {
                             .shadow(radius: 5)
                     }
                     .padding(7)
-                    NavigationLink(destination: Text("Forecasted Rain Harvest View")) {
+                    NavigationLink(destination: ForecastView()) {
                         Text("Forecasted Rain Harvest")
                             .frame(width: 150, height: 150)
-                            .font(.title)
+                            .font(.title2)
                             .bold(true)
                             .foregroundColor(.white)
                             .background(.green)
@@ -44,10 +44,10 @@ struct ContentView: View {
                     .padding(7)
                 }
                 HStack {
-                    NavigationLink(destination: Text("Learn more about Rain Harvest View")) {
+                    NavigationLink(destination: LearnMoreView() ) {
                         Text("Learn \nMore")
                             .frame(width: 150, height: 150)
-                            .font(.title)
+                            .font(.title2)
                             .bold(true)
                             .foregroundColor(.white)
                             .background(.orange)
@@ -55,10 +55,10 @@ struct ContentView: View {
                             .shadow(radius: 5)
                     }
                     .padding(7)
-                    NavigationLink(destination: Text("Local Rain Harvest Resources")) {
-                        Text("Local Rain Harvest Resources")
+                    NavigationLink(destination: RainwaterHarvestInstallationView()) {
+                        Text("Rain Harvest System Installation Resources")
                             .frame(width: 150, height: 150)
-                            .font(.title)
+                            .font(.title2)
                             .bold(true)
                             .foregroundColor(.white)
                             .background(.cyan)
@@ -67,6 +67,10 @@ struct ContentView: View {
                     }
                     .padding(7)
                 }
+                HStack {
+                    Text("Weather data by Open-Meteo.com")
+                }
+                .padding(.top, 50)
             }
             .navigationBarItems(
                 trailing: NavigationLink(
