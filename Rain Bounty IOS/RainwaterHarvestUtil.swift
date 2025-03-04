@@ -78,9 +78,16 @@ class RainwaterHarvestUtil {
         roof_size: Double,
         tank_size: Double,
         harvest_efficiency: Double,
-        calculateWeeklyData: Bool) -> RainWaterCollectionSummary {
-        var tank_water = 0.0
-        let water_needed_for_garden = garden_size * 0.623
+        calculateWeeklyData: Bool,
+        initialWaterCollectedInTank: Double = 0.0) -> RainWaterCollectionSummary {
+            
+        var tank_water = initialWaterCollectedInTank
+        let chunk_size = calculateWeeklyData ? 7 : 1;
+        let chunked_data = daily_rain_data.chunks(chunk_size)
+        
+        // 0.623 * garden_size formula is for weekly water needs (assuming 1 inch per sqft per week)
+        // Divide garden water needs by 7, if we are calculating per day water needs.
+            let water_needed_for_garden = garden_size * 0.623 * Double(chunk_size) / 7.0
 
         var rain_data = RainWaterCollectionSummary(
             weeklyRainCollectionData: [WeeklyRainwaterCollectionData](),
@@ -92,29 +99,28 @@ class RainwaterHarvestUtil {
             totalPersonalWaterUsed: 0.0,
             totalHarvestedRainwaterUsed:0.0,
             roofSize: roof_size)
-            let chunk_size = calculateWeeklyData ? 7 : 1;
-            let chunked_data = daily_rain_data.chunks(chunk_size)
-        var weekly_rain = [Double]();
+            
+        var chunk_rain = [Double]();
 
         for chunk in chunked_data
         {
-            var rain_for_week = 0.0
+            var rain_for_chunk = 0.0
             for daily_rain_value in chunk
             {
-                rain_for_week = rain_for_week + daily_rain_value
+                rain_for_chunk = rain_for_chunk + daily_rain_value
             }
-            weekly_rain.append(rain_for_week)
+            chunk_rain.append(rain_for_chunk)
         }
 
 
-        for i in stride(from: 0, to: weekly_rain.count, by: 1)
+        for i in stride(from: 0, to: chunk_rain.count, by: 1)
         {
             var harvested_water_used_for_irrigation = 0.0
             var self_water_usage = 0.0
             var overflow_water = 0.0
 
-            let rain_on_garden = weekly_rain[i] * 0.623 * garden_size
-            let rain_harvested_from_roof = weekly_rain[i] * roof_size * 0.623 * harvest_efficiency
+            let rain_on_garden = chunk_rain[i] * 0.623 * garden_size
+            let rain_harvested_from_roof = chunk_rain[i] * roof_size * 0.623 * harvest_efficiency
             tank_water = tank_water + rain_harvested_from_roof
             if(tank_water > tank_size)
             {
@@ -144,7 +150,7 @@ class RainwaterHarvestUtil {
             rain_data.weeklyRainCollectionData.append(WeeklyRainwaterCollectionData(
                 id:UUID(),
                 weekNumber: i + 1,
-                rainFall: weekly_rain[i],
+                rainFall: chunk_rain[i],
                 rainCollection: rain_harvested_from_roof,
                 rainOnGarden: rain_on_garden,
                 harvestedRainwaterUsedForIrrigation: harvested_water_used_for_irrigation,
@@ -166,6 +172,7 @@ class RainwaterHarvestUtil {
         }
         
         print("*******************************")
+        print(" Chunk size: \(chunk_size)")
         print(" Garden size: \(rain_data.gardenSize)")
         print(" Weekly water requirement: \(rain_data.weeklyWaterRequirement)")
         print(" Water tank size: \(rain_data.waterTankSize)")
