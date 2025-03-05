@@ -42,6 +42,7 @@ class RainwaterHarvestUtil {
         var totalRainOnGarden : Double
         var totalPersonalWaterUsed : Double
         var totalHarvestedRainwaterUsed: Double
+        var totalOverflowWaterAmount : Double
         var roofSize : Double
     }
 
@@ -98,6 +99,7 @@ class RainwaterHarvestUtil {
             totalRainOnGarden: 0.0,
             totalPersonalWaterUsed: 0.0,
             totalHarvestedRainwaterUsed:0.0,
+            totalOverflowWaterAmount: 0.0,
             roofSize: roof_size)
             
         var chunk_rain = [Double]();
@@ -165,6 +167,7 @@ class RainwaterHarvestUtil {
             rain_data.totalPersonalWaterUsed = rain_data.totalPersonalWaterUsed + rain_data.weeklyRainCollectionData[i].personalWaterUsage
             rain_data.totalHarvestedRainwaterUsed = rain_data.totalHarvestedRainwaterUsed + rain_data.weeklyRainCollectionData[i].harvestedRainwaterUsedForIrrigation
             rain_data.totalRainOnGarden = rain_data.totalRainOnGarden + rain_data.weeklyRainCollectionData[i].rainOnGarden
+            rain_data.totalOverflowWaterAmount = rain_data.totalOverflowWaterAmount + rain_data.weeklyRainCollectionData[i].overflowWaterAmount
             
             if (rain_data.weeklyRainCollectionData[i].personalWaterUsage == 0) {
                 rain_data.numberOfWeeksWateredByRainwater = rain_data.numberOfWeeksWateredByRainwater + 1;
@@ -180,6 +183,7 @@ class RainwaterHarvestUtil {
         print(" Total Rain on Garden this year: \(rain_data.totalRainOnGarden)")
         print(" Total Harvested Water Used For Irrigation this year: \(rain_data.totalHarvestedRainwaterUsed)")
         print(" Total Water Personal water used this year: \(rain_data.totalPersonalWaterUsed)")
+        print(" Total Rainwater Overflow this year: \(rain_data.totalOverflowWaterAmount)")
         print("*******************************")
         
         return rain_data

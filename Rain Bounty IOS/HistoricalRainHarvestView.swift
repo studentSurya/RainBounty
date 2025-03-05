@@ -47,9 +47,11 @@ struct HistoricalRainHarvestView: View {
                         Text("3000")
                     }
                     .padding(.horizontal, 10)
+                    
                     Text("Change tank size to see how much rain you can collect")
                         .font(.subheadline)
-                        .italic()
+                        .fontWeight(.thin)
+                        .padding(.horizontal, 10)
 
                     Text("Tank Size (gal) \(waterTankSize, specifier: "%.1f")")
                         .padding()

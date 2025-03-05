@@ -10,12 +10,19 @@ import SwiftUI
 
 struct LearnMoreView: View {
     
-    fileprivate func AddQnASection(question: String, answer: String, optionalImage: String? = nil ) -> some View {
+    
+    fileprivate func AddInfoSection(topicTitle: String, topicInfo: String, optionalImage: String? = nil ) -> some View {
         return Section(header: HStack {
-            Image(systemName: "questionmark.circle")
-            Text(question)
+            Image(systemName: "info.circle.fill")
+                .symbolRenderingMode(.palette)
+                .foregroundStyle(.white, .blue)
+                .font(.title)
+            
+            Text(topicTitle)
                 .font(.headline)
-            .foregroundColor(.black) }) {
+            .foregroundColor(.black) })  {
+                
+                //Section body starts
                 if (optionalImage != nil) {
                     // Image placeholder for the system diagram
                     Image(optionalImage!)
@@ -25,68 +32,89 @@ struct LearnMoreView: View {
                         .background(Color.white) // White background for the image section
                 }
                 
-                Text(.init(answer))
-                .font(.body)
-                .foregroundColor(.black)
-            } //Section
-            .padding()
+                Text(.init(topicInfo))
+                    .font(.callout)
+                    .foregroundColor(.black)
+        } //Section
+        .padding(.top, 10)
     }
     
     var body: some View {
         VStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 10) {
-                                
-                                AddQnASection(
-                                    question: "What does a typical rain water harvesting system look like?",
-                                    answer: """
-                The main purpose of the water collected using a Rain water harvesting system would be for outdoor uses that do not require potable water. A simple residential harvesting system comprises of the following components. 
+                VStack(alignment: .leading, spacing: 5) {
+                               
+                    AddInfoSection(
+                        topicTitle: "Rainwater Harvesting Basics",
+                        topicInfo: """
+                        Rainwater harvesting is an innovative alternative water supply approach anyone can use. Rainwater harvesting captures, diverts, and stores rainwater for later use.
+
+                        Implementing rainwater harvesting is beneficial because it reduces demand on existing water supply, and reduces run-off, erosion, and contamination of surface water.
+
+                        Rainwater can be used for nearly any purpose that requires water. These include landscape use, stormwater control, wildlife and livestock watering, in-home use, and fire protection. Please see the menu on the right to learn more about each use.
+
+                        A rainwater harvesting system can range in size and complexity. All systems have basics components, which include a catchment surface, conveyance system, storage, distribution, and treatment. 
+                        
+                        """)
+                    
+                    AddInfoSection(
+                        topicTitle: "Rainwater Harvesting System Components",
+                        topicInfo: """
+    A typical domestic rainwater harvesting system comprises six basic components:
+    1. **Catchment surface**: the collection surface from which rainfall runs off
+    2. **Gutters and downspouts**: channel water from the roof to the tank
+    3. **Leaf screens, first-flush diverters, and roof washers**: components which remove debris and dust from the captured rainwater before it goes to the storage tanks
+    4. **Storage tanks**: One or more storage tanks, also called **cisterns**
+    5. **Delivery system**: gravity-fed or pumped to the end use
+    6. **Treatment/purification**: for potable systems, filters and other methods to make the water safe to drink
+    
+    """,
+                        optionalImage: "info-rwh-typical-installation")
+                    
+                                AddInfoSection(
+                                    topicTitle:"System Sizing",
+                                    topicInfo:"""
+                The basic rule for sizing any rainwater harvesting system is that the volume of water that can be captured and stored (the supply) must equal or exceed the volume of water used (the demand).
                 
-                • **Catchment surface** - the collection surface from which rainfall runs off like your roof.
-                • **Gutters and downspouts** – to channel water from the roof to the tank.
-                • **Screens, first-flush diverters, and roof washers** - components which remove debris and dust from the captured rainwater before it goes to the tank.
-                • **Storage system** – to store the collected rain water.
-                • **Delivery system** - gravity-fed or pumped to the end use like watering your lawn and plants.
+                However, if rainwater is to be used only for irrigation in a residential household, a rough estimate of demand, supply, and storage capacity may be sufficient. This is assuming that irrigation needs can be supplemented with municipal water.
+                
+                """)
+                                
+
+                                
+                                AddInfoSection(
+                                    topicTitle:"Collection Surface and Harvest Potential",
+                                    topicInfo:"""
+                The collection surface is the "footprint" of the roof. In other words, regardless of the pitch of the roof, the effective collection surface is the area covered by collection surface (Length **(L)** X Width **(W)** of the roof from eave to eave and front to rear). Obviously if only one side of the structure is guttered, only the area drained by the gutters should be considered for calculating rainwater harvest potential.
+                
+                Approximately **0.62 gallons** of rainwater can be harvested from **1 square foot** of collection surface for every inch of rainfall. In practice, however, some rainwater is lost to first flush, evaporation, splash-out or overshoot from the gutters in hard rains, and possibly leaks. 
                 
                 """,
-                                    optionalImage: "rainwater-harvesting-system")
+                                    optionalImage: "info-rwh-roof-footprint")
 
-                                AddQnASection(
-                                    question:"Is it illegal to harvest rainwater?",
-                                    answer:"""
-                In the majority of cases, the answer is no and is actively encouraged by state governments and individual counties with rebates on equipment setup and tax incentives. So, if you are thinking about a rainwater harvesting solution, it is always best to check with your local authorities to ensure your system complies with local codes/regulations as well as learn about the rebates and tax incentives.
-                
-                """)
-                                
-                                AddQnASection(
-                                    question: "What are the benefits of Rainwater Collection?",
-                                    answer: """
-                **Protects the environment** 
-                • Rainwater harvesting conserves water, one of the most precious natural resources.
-                • By using the harvested water, you reduce the carbon footprint associated with manufacturing and transporting municipal water to your location instead.
-                • It can also reduce the amount of stormwater runoff that can cause flooding and erosion.
-                • Rainwater is great for watering lawns and gardens as it is free of chemicals and salts that are typical of any treated water. Additionally, rainwater has a balanced pH that is required by the plants.
-                
-                **Saves Money**
-                • Rainwater harvesting can reduce the amount of water you need to buy from the municipality, which can lower your water bill.
-                
-                **Provides an alternative source of water**
-                • Rainwater can be used for irrigation, washing driveways/vehicles, flushing toilets, etc.
-                • If a municipality can't provide water, people with rainwater harvesting systems may have a reliable water source.
-                
-                """)
-                                
-                                AddQnASection(
-                                    question:"How much rainwater can I collect?",
-                                    answer:"""
-                You need to know your average annual rainfall data for your area and approximate collection surface area, like your roof, using either the length and width of your house or square footage. 
-                
-                Don't fret! To simplify this calculation, you can use our **Rain Water Calculator!!**.
-                """)
+
+                    AddInfoSection(
+                        topicTitle:"More Resources",
+                        topicInfo:"""
+                        
+                        • **Rainwater Harvesting System Planning**: [PDF](https://greywateraction.org/wp-content/uploads/2014/11/Rainwater-Harvesting-System-Practitioner-Manual.pdf)
+                        
+                        • **Rainwater Harvesting Training**: [PDF](https://greywateraction.org/wp-content/uploads/2014/11/rwh_training_draft_v3.pdf)
+                        
+                        • **Texas Conservation in Your Backyard**: [PDF](https://www.nrcs.usda.gov/sites/default/files/2022-09/Texas_Conservation_in_Your_Backyard_Rainwater_Harvesting.pdf)
+                        
+                        • **Rainwater Harvesting Tool Help Guide**: [PDF](https://www.energy.gov/sites/default/files/2023-12/rainwater-harvesting-tool-help-guide.pdf)
+                        
+                        • **The Texas Manual on Rainwater Harvesting**: [PDF](https://www.twdb.texas.gov/publications/brochures/conservation/doc/RainwaterHarvestingManual_3rdedition.pdf)
+                        """)
                 } // VStack
                 .padding()
                 .background(Color.white.opacity(0.85))
             } //ScrollView
         }
     }
+}
+
+#Preview {
+    return LearnMoreView()
 }

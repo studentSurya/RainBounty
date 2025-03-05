@@ -60,9 +60,9 @@ struct ContentView: View {
                     }
                     .padding(7)
                     NavigationLink(
-                        destination: RainwaterHarvestInstallationView().navigationTitle("Installation Resources")
+                        destination: FAQView().navigationTitle("FAQ")
                     ) {
-                        Text("Rain Harvest System Installation Resources")
+                        Text("Frequently Asked \nQuestions")
                             .frame(width: 150, height: 150)
                             .font(.title2)
                             .bold(true)
@@ -76,6 +76,7 @@ struct ContentView: View {
                 HStack {
                     Text("Weather data by [Open-Meteo.com](https://Open-Meteo.com)")
                         .font(.subheadline)
+                        .italic()
                 }
                 .padding(.top, 50)
             }

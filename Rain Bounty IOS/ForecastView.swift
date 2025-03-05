@@ -49,9 +49,10 @@ struct ForecastView: View {
                     }
                     .padding(.horizontal, 10)
                     
-                    Text("Check the water level in your tank(s) and set the initial water collected value")
+                    Text("Set the water level in your tank(s) to see how many days you can irrigate using rainwater")
                         .font(.subheadline)
-                        .italic()
+                        .fontWeight(.thin)
+                        .padding(.horizontal, 10)
                     
                     HStack {
                         Text("Initial Water Collected in Tank (gal)")
@@ -77,8 +78,6 @@ struct ForecastView: View {
                     if (self.rain_water_collection_data != nil) {
                         // Background Gradient
                         Chart {
-                            let calendar = Calendar.autoupdatingCurrent
-                            
                             //Tank water size Chart
                             ForEach(self.rain_water_collection_data!.weeklyRainCollectionData) { dataPoint in
                                 LineMark(
@@ -95,7 +94,6 @@ struct ForecastView: View {
                                     y: .value("Rain Collection", dataPoint.rainCollection)
                                 )
                                 .foregroundStyle(.green)
-                                //.chartYAxis(axis: .hidden) // Hide the volume y-axis
                             }
                         }
                         .frame(width: .infinity, height: 400, alignment: .center )
@@ -143,6 +141,18 @@ struct ForecastView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
 
                                 Text("\(self.rain_water_collection_data!.totalHarvestedRainwaterUsed, specifier: "%.0f")")
+                                    .frame(maxWidth: valueWidth, alignment: .trailing)
+                                    .bold(true)
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.bottom, 5)
+
+                            
+                            HStack {
+                                Text("Overflow Rainwater (gal)")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                                Text("\(self.rain_water_collection_data!.totalOverflowWaterAmount, specifier: "%.0f")")
                                     .frame(maxWidth: valueWidth, alignment: .trailing)
                                     .bold(true)
                             }
