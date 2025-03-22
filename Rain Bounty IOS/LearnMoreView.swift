@@ -51,7 +51,7 @@ struct LearnMoreView: View {
 
                         Implementing rainwater harvesting is beneficial because it reduces demand on existing water supply, and reduces run-off, erosion, and contamination of surface water.
 
-                        Rainwater can be used for nearly any purpose that requires water. These include landscape use, stormwater control, wildlife and livestock watering, in-home use, and fire protection. Please see the menu on the right to learn more about each use.
+                        Rainwater can be used for nearly any purpose that requires water. These include landscape use, stormwater control, wildlife and livestock watering, in-home use, and fire protection.
 
                         A rainwater harvesting system can range in size and complexity. All systems have basics components, which include a catchment surface, conveyance system, storage, distribution, and treatment. 
                         
@@ -101,7 +101,7 @@ struct LearnMoreView: View {
                         
                         • **Rainwater Harvesting Training**: [PDF](https://greywateraction.org/wp-content/uploads/2014/11/rwh_training_draft_v3.pdf)
                         
-                        • **Texas Conservation in Your Backyard**: [PDF](https://www.nrcs.usda.gov/sites/default/files/2022-09/Texas_Conservation_in_Your_Backyard_Rainwater_Harvesting.pdf)
+                        • **USDA Conservation in Your Backyard**: [PDF](https://www.nrcs.usda.gov/sites/default/files/2022-09/Texas_Conservation_in_Your_Backyard_Rainwater_Harvesting.pdf)
                         
                         • **Rainwater Harvesting Tool Help Guide**: [PDF](https://www.energy.gov/sites/default/files/2023-12/rainwater-harvesting-tool-help-guide.pdf)
                         

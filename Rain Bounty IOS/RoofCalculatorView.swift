@@ -27,8 +27,8 @@ struct RoofCalculatorView: View {
                 
                 Picker("Roof area options?", selection: $uiStateRoofSizeToggleOn)
                 {
-                    Text("Direct").tag(true)
-                    Text("L x W ").tag(false)
+                    Text("Square Footage").tag(true)
+                    Text("Length by Width").tag(false)
                 }
                 .pickerStyle(.segmented)
                 .onChange(of: uiStateRoofSizeToggleOn) {

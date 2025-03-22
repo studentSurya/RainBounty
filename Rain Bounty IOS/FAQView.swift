@@ -118,6 +118,19 @@ areas of the U.S.
                 """)
                     
                     
+                    AddQnASection(
+                        question:"How can I get support?",
+                        answer:"""
+    In order to get support please reach out to rain_bounty_app@outlook.com. We look forward to you feedback. 
+    
+    """)
+                    AddQnASection(
+                        question:"How is my data from the Settings page being used?",
+                        answer:"""
+    The data from the Settings page is being used to configure the varaibles for the Planning sections. We use the location data to fetch the historical rainfall and future forecast. 
+    
+    """)
+                    
                     
                 } // VStack
                 .padding()

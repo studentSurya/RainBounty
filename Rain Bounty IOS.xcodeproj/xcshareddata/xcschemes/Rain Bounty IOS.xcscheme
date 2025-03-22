@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "17BBB7542D62860D002089E8"
-               BuildableName = "Rain Bounty IOS.app"
-               BlueprintName = "Rain Bounty IOS"
+               BuildableName = "Rain Bounty.app"
+               BlueprintName = "Rain Bounty"
                ReferencedContainer = "container:Rain Bounty IOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -69,8 +69,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "17BBB7542D62860D002089E8"
-            BuildableName = "Rain Bounty IOS.app"
-            BlueprintName = "Rain Bounty IOS"
+            BuildableName = "Rain Bounty.app"
+            BlueprintName = "Rain Bounty"
             ReferencedContainer = "container:Rain Bounty IOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -90,8 +90,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "17BBB7542D62860D002089E8"
-            BuildableName = "Rain Bounty IOS.app"
-            BlueprintName = "Rain Bounty IOS"
+            BuildableName = "Rain Bounty.app"
+            BlueprintName = "Rain Bounty"
             ReferencedContainer = "container:Rain Bounty IOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

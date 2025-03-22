@@ -99,7 +99,7 @@ struct SettingsView: View {
             }
             
             Section (header: Text("Home Info"),
-                     footer: Text("This data allows us to simulate your rainfall based of your home and garden measurments."))
+                     footer: Text("This data allows us to simulate your rainfall based of your home and garden/lawn measurements."))
             {
                 
                 //Roof area settings navigation link
@@ -109,7 +109,7 @@ struct SettingsView: View {
                         .environmentObject(gblHomeSettings),
                     label: {
                         HStack{
-                            Text("Roof area")
+                            Text("Roof Area")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             Text("\(roofAreaInt) sqft")
                                 .frame(maxWidth: .infinity, alignment: .trailing)
@@ -123,7 +123,7 @@ struct SettingsView: View {
                         GardenCalculatorView(),
                     label: {
                         HStack{
-                            Text("Garden area")
+                            Text("Garden/Lawn Area")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             Text("\(gardenAreaInt) sqft")
                                 .frame(maxWidth: .infinity, alignment: .trailing)
@@ -151,7 +151,7 @@ struct SettingsView: View {
                 }
             } //end-Section
             
-            Section (header: Text("City / Municipal info"),
+            /*Section (header: Text("City / Municipal info"),
                      footer: Text("This data allows us to simulate your water costs and potential savings."))
                 {
                 
@@ -172,7 +172,7 @@ struct SettingsView: View {
                     Text(" usd")
                         .frame(width:40, height:nil, alignment: .trailing)
                 }
-            }
+            }*/
             
             Section (header: Text("Advanced settings"),
                      footer: Text("Use these settings to customize your water harvesting and usage simulation."))
@@ -180,7 +180,7 @@ struct SettingsView: View {
                 
                 //Water Cost settings
                 HStack{
-                    Text("Rainwater harvest efficiency")
+                    Text("Rainwater Harvest Efficiency")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .multilineTextAlignment(.leading)
                     TextField("", text: $uiharvestEfficiencyStr)

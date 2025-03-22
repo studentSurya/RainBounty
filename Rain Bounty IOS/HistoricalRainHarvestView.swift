@@ -29,7 +29,10 @@ struct HistoricalRainHarvestView: View {
             ScrollView (.vertical) {
                 VStack {
                     let lastYear = Calendar.current.component(.year, from: Date()) - 1
-                    
+                    Text("To help you plan your ideal rainwater harvesting tank size, we use previous year's rainfall data to simulate water collection and require you to first configure your home details and irrigation needs in the Settings page.")
+                        .font(.caption)
+                        .fontWeight(.thin)
+                        .padding(.horizontal, 10)
                     Slider(
                         value: Binding(get: {
                             self.waterTankSize
@@ -52,6 +55,7 @@ struct HistoricalRainHarvestView: View {
                         .font(.subheadline)
                         .fontWeight(.thin)
                         .padding(.horizontal, 10)
+                    
 
                     Text("Tank Size (gal) \(waterTankSize, specifier: "%.1f")")
                         .padding()
@@ -112,7 +116,7 @@ struct HistoricalRainHarvestView: View {
                             let valueWidth = 70.0 //.infinity
                             
                             HStack {
-                                Text("# of Weeks watered with rain or harvested rainwater")
+                                Text("Weeks watered with rain and harvested rainwater")
                                     .frame(maxWidth: .infinity, alignment: .leading)
 
                                 Text("\(self.rain_water_collection_summary!.numberOfWeeksWateredByRainwater)")
@@ -144,7 +148,7 @@ struct HistoricalRainHarvestView: View {
                             .padding(.bottom, 5)
 
                             HStack {
-                                Text("Personal water used for irrigation (gal)")
+                                Text("Municipal Water used for irrigation (gal)")
                                     .frame(maxWidth: .infinity, alignment: .leading)
 
                                 Text("\(self.rain_water_collection_summary!.totalPersonalWaterUsed, specifier: "%.0f")")
@@ -155,7 +159,7 @@ struct HistoricalRainHarvestView: View {
                             .padding(.bottom, 5)
 
                             HStack {
-                                Text("Weekly water req (gal)")
+                                Text("Weekly irrigation requirment (gal)")
                                     .frame(maxWidth: .infinity, alignment: .leading)
 
                                 Text("\(self.rain_water_collection_summary!.weeklyWaterRequirement, specifier: "%.0f")")

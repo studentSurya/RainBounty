@@ -19,10 +19,28 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
+                HStack{
+                    VStack{
+                        Image("app-logo")
+                            .frame(width: 50, height: 50)
+                            .mask(Rectangle().fill(Color.white))
+                            
+                        Text("""
+    Harvest the rains
+    Reap the gains!
+""")
+                        .foregroundColor(.blue)
+                        .padding(.top, 20)
+                        .padding(.bottom, 20)
+                        .font(.title3)
+                        .italic()
+                        .fontWeight(.bold)
+                    }
+                }
                 HStack {
                     NavigationLink(
                         destination: HistoricalRainHarvestView().navigationTitle("Historical Rain Harvest")) {
-                        Text("Historical Rain Harvest")
+                        Text("Plan Your Tank Size")
                             .frame(width: 150, height: 150)
                             .font(.title2)
                             .bold(true)
@@ -34,12 +52,12 @@ struct ContentView: View {
                     .padding(7)
                     NavigationLink(
                         destination: ForecastView().navigationTitle("Forecasted Rain Harvest")) {
-                        Text("Forecasted Rain Harvest")
+                        Text("Plan Your Harvest")
                             .frame(width: 150, height: 150)
                             .font(.title2)
                             .bold(true)
                             .foregroundColor(.white)
-                            .background(.green)
+                            .background(.mint)
                             .cornerRadius(10)
                             .shadow(radius: 5)
                     }
@@ -54,7 +72,7 @@ struct ContentView: View {
                             .font(.title2)
                             .bold(true)
                             .foregroundColor(.white)
-                            .background(.orange)
+                            .background(.teal)
                             .cornerRadius(10)
                             .shadow(radius: 5)
                     }
@@ -73,6 +91,7 @@ struct ContentView: View {
                     }
                     .padding(7)
                 }
+
                 HStack {
                     Text("Weather data by [Open-Meteo.com](https://Open-Meteo.com)")
                         .font(.subheadline)
@@ -85,7 +104,7 @@ struct ContentView: View {
                     .font(.title2)
                     .bold(true)
                     .foregroundColor(.blue)
-                    .padding(.leading, 10)
+                    .padding(.leading, 130)
                     .padding(.top, 20)
                 ,
                 trailing: NavigationLink(

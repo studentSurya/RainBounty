@@ -24,7 +24,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		17BBB7552D62860D002089E8 /* Rain Bounty IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rain Bounty IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		17BBB7552D62860D002089E8 /* Rain Bounty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rain Bounty.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17BBB7652D62860E002089E8 /* Rain Bounty IOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Rain Bounty IOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17BBB76F2D62860E002089E8 /* Rain Bounty IOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Rain Bounty IOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -85,7 +85,7 @@
 		17BBB7562D62860D002089E8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				17BBB7552D62860D002089E8 /* Rain Bounty IOS.app */,
+				17BBB7552D62860D002089E8 /* Rain Bounty.app */,
 				17BBB7652D62860E002089E8 /* Rain Bounty IOSTests.xctest */,
 				17BBB76F2D62860E002089E8 /* Rain Bounty IOSUITests.xctest */,
 			);
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		17BBB7542D62860D002089E8 /* Rain Bounty IOS */ = {
+		17BBB7542D62860D002089E8 /* Rain Bounty */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 17BBB7792D62860E002089E8 /* Build configuration list for PBXNativeTarget "Rain Bounty IOS" */;
+			buildConfigurationList = 17BBB7792D62860E002089E8 /* Build configuration list for PBXNativeTarget "Rain Bounty" */;
 			buildPhases = (
 				17BBB7512D62860D002089E8 /* Sources */,
 				17BBB7522D62860D002089E8 /* Frameworks */,
@@ -110,11 +110,11 @@
 			fileSystemSynchronizedGroups = (
 				17BBB7572D62860D002089E8 /* Rain Bounty IOS */,
 			);
-			name = "Rain Bounty IOS";
+			name = "Rain Bounty";
 			packageProductDependencies = (
 			);
 			productName = "Rain Bounty IOS";
-			productReference = 17BBB7552D62860D002089E8 /* Rain Bounty IOS.app */;
+			productReference = 17BBB7552D62860D002089E8 /* Rain Bounty.app */;
 			productType = "com.apple.product-type.application";
 		};
 		17BBB7642D62860E002089E8 /* Rain Bounty IOSTests */ = {
@@ -200,7 +200,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				17BBB7542D62860D002089E8 /* Rain Bounty IOS */,
+				17BBB7542D62860D002089E8 /* Rain Bounty */,
 				17BBB7642D62860E002089E8 /* Rain Bounty IOSTests */,
 				17BBB76E2D62860E002089E8 /* Rain Bounty IOSUITests */,
 			);
@@ -258,12 +258,12 @@
 /* Begin PBXTargetDependency section */
 		17BBB7672D62860E002089E8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 17BBB7542D62860D002089E8 /* Rain Bounty IOS */;
+			target = 17BBB7542D62860D002089E8 /* Rain Bounty */;
 			targetProxy = 17BBB7662D62860E002089E8 /* PBXContainerItemProxy */;
 		};
 		17BBB7712D62860E002089E8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 17BBB7542D62860D002089E8 /* Rain Bounty IOS */;
+			target = 17BBB7542D62860D002089E8 /* Rain Bounty */;
 			targetProxy = 17BBB7702D62860E002089E8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -406,7 +406,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -438,7 +438,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -532,7 +532,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		17BBB7792D62860E002089E8 /* Build configuration list for PBXNativeTarget "Rain Bounty IOS" */ = {
+		17BBB7792D62860E002089E8 /* Build configuration list for PBXNativeTarget "Rain Bounty" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				17BBB77A2D62860E002089E8 /* Debug */,

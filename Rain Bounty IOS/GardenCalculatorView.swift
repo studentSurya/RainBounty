@@ -21,8 +21,8 @@ struct GardenCalculatorView: View {
             {
                 Picker("Garden area options?", selection: $uiStateGardenSizeToggleOn)
                 {
-                    Text("Direct").tag(true)
-                    Text("L x W ").tag(false)
+                    Text("Square Footage").tag(true)
+                    Text("Length by Width ").tag(false)
                 }
                 .pickerStyle(.segmented)
                 .onChange(of: uiStateGardenSizeToggleOn) {

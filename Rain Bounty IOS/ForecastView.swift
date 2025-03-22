@@ -31,6 +31,10 @@ struct ForecastView: View {
         ZStack {
             ScrollView (.vertical) {
                 VStack {
+                    Text("To help you optimize your harvested rainwater, we use a 14-day rain forecast to simulate water collection and usage.")
+                        .font(.caption)
+                        .fontWeight(.thin)
+                        .padding(.horizontal, 10)
                     Slider(
                         value: Binding(get: {
                             self.waterCollectedInTank
@@ -53,6 +57,7 @@ struct ForecastView: View {
                         .font(.subheadline)
                         .fontWeight(.thin)
                         .padding(.horizontal, 10)
+                    
                     
                     HStack {
                         Text("Initial Water Collected in Tank (gal)")
@@ -121,12 +126,12 @@ struct ForecastView: View {
                         }
                         .padding()
                         
-                        Text(verbatim: "Rain Collection and Storage trend in the next two weeks")
+                        Text(verbatim: "Rain Collection and Storage trend in the next 14 days")
                             .padding()
                         VStack {
                             
                             HStack {
-                                Text("# of Days watered with rain or harvested rainwater")
+                                Text("Days watered with rain and harvested rainwater")
                                     .frame(maxWidth: .infinity, alignment: .leading)
 
                                 Text("\(self.rain_water_collection_data!.numberOfWeeksWateredByRainwater)")
@@ -160,7 +165,7 @@ struct ForecastView: View {
                             .padding(.bottom, 5)
 
                             HStack {
-                                Text("Personal water used for irrigation (gal)")
+                                Text("Municipal water used for irrigation (gal)")
                                     .frame(maxWidth: .infinity, alignment: .leading)
 
                                 Text("\(self.rain_water_collection_data!.totalPersonalWaterUsed, specifier: "%.0f")")
@@ -171,7 +176,7 @@ struct ForecastView: View {
                             .padding(.bottom, 5)
 
                             HStack {
-                                Text("Daily water req (gal)")
+                                Text("Daily irrigation requirement (gal)")
                                     .frame(maxWidth: .infinity, alignment: .leading)
 
                                 Text("\(self.rain_water_collection_data!.weeklyWaterRequirement, specifier: "%.0f")")
