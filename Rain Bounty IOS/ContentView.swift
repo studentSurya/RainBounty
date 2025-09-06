@@ -8,13 +8,7 @@
 import SwiftUI
 import CoreLocation
 
-class HomeSettings: ObservableObject {
-    @Published var roofAreaInt: Int = 0
-}
-
 struct ContentView: View {
-    
-    @StateObject var gblHomeSettings = HomeSettings()
     
     var body: some View {
         NavigationView {
@@ -22,8 +16,9 @@ struct ContentView: View {
                 HStack{
                     VStack{
                         Image("app-logo")
-                            .frame(width: 50, height: 50)
-                            .mask(Rectangle().fill(Color.white))
+                            .resizable()
+                            .frame(width: 80, height: 80)
+                          //  .mask(Rectangle().fill(Color.yellow))
                             
                         Text("""
     Harvest the rains
@@ -109,8 +104,7 @@ struct ContentView: View {
                 ,
                 trailing: NavigationLink(
                     destination:
-                        SettingsView()
-                        .environmentObject(gblHomeSettings)) {
+                        SettingsView()) {
                             Image(systemName: "gear")
                                 .frame(width: 50, height: 50)
                                 .padding(.trailing, 10)

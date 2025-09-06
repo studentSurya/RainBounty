@@ -7,8 +7,6 @@
 import SwiftUI
 
 struct RoofCalculatorView: View {
-    @EnvironmentObject var gblHomeSettings: HomeSettings
-
     @AppStorage("uiStateRoofSizeToggleOn") var uiStateRoofSizeToggleOn: Bool = false
     @AppStorage("uiStateRoofSizeStr") var uiStateRoofSizeStr: String = ""
     @AppStorage("uiStateHouseLength") var uiStateHouseLength: String = ""

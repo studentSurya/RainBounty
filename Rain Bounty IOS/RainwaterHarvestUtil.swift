@@ -7,6 +7,8 @@
 import SwiftUI
 
 class RainwaterHarvestUtil {
+    static let HistoricalLookBackYears: Int = 1
+    
     struct LocationRainfallData: Codable {
         let daily: Daily
     }
@@ -48,11 +50,21 @@ class RainwaterHarvestUtil {
 
     // MARK: - API Request
     static func getRain(latitude: Double, longitude: Double, getForecastData:Bool) async throws -> [Double] {
+        let endDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())! // yesterday
+        let startDate = Calendar.current.date(byAdding: .year, value: -HistoricalLookBackYears, to: endDate)!
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+
+        let startDateString = formatter.string(from: startDate)
+        let endDateString = formatter.string(from: endDate)
+
+        
         //request one whole year's historical rainfall data
         //NOTE: The start_date and end_date is an year apart.
         var endpoint = getForecastData ?
         "https://api.open-meteo.com/v1/forecast?latitude=\(latitude)&longitude=\(longitude)&daily=rain_sum&timezone=GMT&forecast_days=14":
-        "https://archive-api.open-meteo.com/v1/archive?latitude=\(latitude)&longitude=\(longitude)&start_date=2024-01-01&end_date=2024-12-31&daily=rain_sum&timezone=GMT"
+        "https://archive-api.open-meteo.com/v1/archive?latitude=\(latitude)&longitude=\(longitude)&start_date=\(startDateString)&end_date=\(endDateString)&daily=rain_sum&timezone=GMT"
         
         //NOTE: This method should return rain data in inches
         //      We do this by appending precipation unit as Inches
@@ -114,6 +126,16 @@ class RainwaterHarvestUtil {
             chunk_rain.append(rain_for_chunk)
         }
 
+        // Calculate starting weeknumber
+        let endDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())! // yesterday
+        let startDate = Calendar.current.date(byAdding: .year, value: -HistoricalLookBackYears, to: endDate)!
+        
+        // if we are calculating weekly data then adjust the start of the week number using the startDate which is 3 years ago.
+        // if not, then set the startWeekNumber to 1, since we are calculating per day data.
+        var startWeekNumber = calculateWeeklyData ? Calendar.current.component(.weekOfYear, from: startDate) : 1
+        print("Start week number: \(startWeekNumber)")
+            
+
 
         for i in stride(from: 0, to: chunk_rain.count, by: 1)
         {
@@ -151,7 +173,7 @@ class RainwaterHarvestUtil {
 
             rain_data.weeklyRainCollectionData.append(WeeklyRainwaterCollectionData(
                 id:UUID(),
-                weekNumber: i + 1,
+                weekNumber: startWeekNumber,
                 rainFall: chunk_rain[i],
                 rainCollection: rain_harvested_from_roof,
                 rainOnGarden: rain_on_garden,
@@ -159,6 +181,8 @@ class RainwaterHarvestUtil {
                 overflowWaterAmount: overflow_water,
                 tankWater: tank_water,
                 personalWaterUsage: self_water_usage))
+            
+            startWeekNumber += 1
         }
 
         

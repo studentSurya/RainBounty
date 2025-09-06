@@ -8,8 +8,6 @@ import SwiftUI
 import MapKit
 
 struct SettingsView: View {
-    @EnvironmentObject var gblHomeSettings: HomeSettings
-    
     @AppStorage("uiStateWaterTankSizeStr") var uiStateWaterTankSizeStr: String = "100"
     @AppStorage("uiStateWaterCostUsdStr") var uiStateWaterCostUsdStr: String = "2.38"
     @AppStorage("uiharvestEfficiencyStr") var uiharvestEfficiencyStr: String = "0.75"
@@ -84,9 +82,13 @@ struct SettingsView: View {
                     TextField("Enter Address...", text: $searchText)
                         .font(.subheadline)
                         .padding(12)
-                        .background(.white)
+                        .border(Color.black, width: 3)
+                        //.background(.secondarySystemBackground)
                         .padding()
                         .shadow(radius: 10)
+                        
+                        
+                        
                 }
                 .onSubmit(of: .text) {
                     Task { await searchPlaces() }
@@ -105,8 +107,7 @@ struct SettingsView: View {
                 //Roof area settings navigation link
                 NavigationLink(
                     destination:
-                        RoofCalculatorView()
-                        .environmentObject(gblHomeSettings),
+                        RoofCalculatorView(),
                     label: {
                         HStack{
                             Text("Roof Area")

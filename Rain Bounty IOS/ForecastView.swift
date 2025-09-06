@@ -28,6 +28,27 @@ struct ForecastView: View {
     let valueWidth = 70.0 //.infinity
     
     var body: some View {
+        if(roofAreaInt == 0 || gardenAreaInt == 0)
+        {
+            ZStack {
+                VStack {
+                    Text("To get the most accurate rainwater collection data, please configure your rainwater collection location, roof and garden/lawn area using the settings link below:")
+                        .font(.subheadline)
+                        .fontWeight(.thin)
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 10)
+                    
+                    NavigationLink(destination: SettingsView()){
+                        Text (" Settings ")
+                            .font(.callout)
+                        Image(systemName: "gear")
+                            //.frame(width: 50, height: 50)
+                    }
+                }
+            }
+        }
+        else
+        {
         ZStack {
             ScrollView (.vertical) {
                 VStack {
@@ -108,10 +129,11 @@ struct ForecastView: View {
                         .chartXAxis {
                             AxisMarks(values: .stride(by: .day, count: 2)) { value in
                                 if let date = value.as(Date.self) {
-                                    let day = Calendar.current.component(.day, from: date)
-                                    switch day {
-                                    default:
-                                        AxisValueLabel(format: .dateTime.day().month())
+                                    AxisValueLabel {
+                                        Text(date, format: Date.FormatStyle()
+                                            .day().month())
+                                          //  .calendar(.current)          // force local calendar
+                                          //  .timeZone(.current))        // force local timezone
                                     }
                                 }
                                 AxisGridLine()
@@ -198,6 +220,7 @@ struct ForecastView: View {
         .onAppear() {
             self.waterCollectedInTank = Double(self.waterTankSizeInt)
             runGetRainData()
+        }
         }
     }
 

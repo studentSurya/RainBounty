@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "final-image 1.jpg",
+      "filename" : "final-image 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "app-logo-2x.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
