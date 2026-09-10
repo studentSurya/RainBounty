@@ -396,7 +396,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Rain Bounty IOS/Preview Content\"";
-				DEVELOPMENT_TEAM = UU8RSQ8SMZ;
+				DEVELOPMENT_TEAM = WRGW92PDFC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app requires location info to provide accurate rain water harvesting historical trends and forecast";
@@ -429,7 +429,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Rain Bounty IOS/Preview Content\"";
-				DEVELOPMENT_TEAM = UU8RSQ8SMZ;
+				DEVELOPMENT_TEAM = WRGW92PDFC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app requires location info to provide accurate rain water harvesting historical trends and forecast";

@@ -99,16 +99,14 @@ struct ContentView: View {
                     .font(.title2)
                     .bold(true)
                     .foregroundColor(.blue)
-                    .padding(.leading, 130)
-                    .padding(.top, 20)
+                    .fixedSize(horizontal: true, vertical: false)
+                    .allowsHitTesting(false)
                 ,
                 trailing: NavigationLink(
                     destination:
                         SettingsView()) {
                             Image(systemName: "gear")
                                 .frame(width: 50, height: 50)
-                                .padding(.trailing, 10)
-                                .padding(.top, 20)
                         }
             )
             
@@ -116,6 +114,7 @@ struct ContentView: View {
         .onAppear {
             CLLocationManager().requestWhenInUseAuthorization()
         }
+        //.tint(.green)
     }
 }
 
