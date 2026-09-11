@@ -5,6 +5,7 @@
 //  Created by Surya Swaminathan on 2/19/25.
 //
 import SwiftUI
+import UserNotifications
 
 class RainwaterHarvestUtil {
     static let HistoricalLookBackYears: Int = 1
@@ -83,6 +84,36 @@ class RainwaterHarvestUtil {
         
         let rainfallData: LocationRainfallData =  try JSONDecoder().decode(LocationRainfallData.self, from: data)
         return rainfallData.daily.rain_sum
+    }
+    
+    static func checkForRainAndNotify(dailyRainData: [Double], threshold: Double = 0.05) {
+        let nextThreeDays = dailyRainData.prefix(3)
+        let totalExpectedRain = nextThreeDays.reduce(0, +)
+
+        guard totalExpectedRain >= threshold else { return }
+
+        let lastNotifiedKey = "lastRainAlertDate"
+        let today = Calendar.current.startOfDay(for: Date())
+        if let lastDate = UserDefaults.standard.object(forKey: lastNotifiedKey) as? Date,
+           Calendar.current.isDate(lastDate, inSameDayAs: today) {
+            return
+        }
+
+        let content = UNMutableNotificationContent()
+        content.title = "Rain expected soon"
+        content.body = String(format: "About %.2f inches of rain expected over the next 3 days — check your tank space.", totalExpectedRain)
+        content.sound = .default
+
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let request = UNNotificationRequest(identifier: "rain-forecast-alert", content: content, trigger: trigger)
+
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Failed to schedule rain notification: \(error)")
+            } else {
+                UserDefaults.standard.set(today, forKey: lastNotifiedKey)
+            }
+        }
     }
     
     static func calculateRainCollectionTrend(
