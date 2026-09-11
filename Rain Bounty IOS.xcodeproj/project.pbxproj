@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		17C9F8AA3053AAAD00F3C0FA /* OneSignalExtension in Frameworks */ = {isa = PBXBuildFile; productRef = 17C9F8A93053AAAD00F3C0FA /* OneSignalExtension */; };
+		17C9F8AC3053AAAD00F3C0FA /* OneSignalFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 17C9F8AB3053AAAD00F3C0FA /* OneSignalFramework */; };
+		17C9F8AE3053AAAD00F3C0FA /* OneSignalInAppMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 17C9F8AD3053AAAD00F3C0FA /* OneSignalInAppMessages */; };
+		17C9F8B03053AAAD00F3C0FA /* OneSignalLocation in Frameworks */ = {isa = PBXBuildFile; productRef = 17C9F8AF3053AAAD00F3C0FA /* OneSignalLocation */; };
+		17C9F8BC3053AB2300F3C0FA /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 17C9F8B53053AB2300F3C0FA /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		17C9F8C43053ABDE00F3C0FA /* OneSignalExtension in Frameworks */ = {isa = PBXBuildFile; productRef = 17C9F8C33053ABDE00F3C0FA /* OneSignalExtension */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		17BBB7662D62860E002089E8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,13 +30,47 @@
 			remoteGlobalIDString = 17BBB7542D62860D002089E8;
 			remoteInfo = "Rain Bounty IOS";
 		};
+		17C9F8BA3053AB2300F3C0FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17BBB74D2D62860D002089E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17C9F8B43053AB2300F3C0FA;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		17C9F8C13053AB2300F3C0FA /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				17C9F8BC3053AB2300F3C0FA /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		17BBB7552D62860D002089E8 /* Rain Bounty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rain Bounty.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17BBB7652D62860E002089E8 /* Rain Bounty IOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Rain Bounty IOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17BBB76F2D62860E002089E8 /* Rain Bounty IOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Rain Bounty IOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		17C9F8A630539B2100F3C0FA /* Rain Bounty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Rain Bounty.entitlements"; sourceTree = "<group>"; };
+		17C9F8A730539B3100F3C0FA /* Rain-Bounty-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Rain-Bounty-Info.plist"; sourceTree = "<group>"; };
+		17C9F8B53053AB2300F3C0FA /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		17C9F8BD3053AB2300F3C0FA /* Exceptions for "OneSignalNotificationServiceExtension" folder in "OneSignalNotificationServiceExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 17C9F8B43053AB2300F3C0FA /* OneSignalNotificationServiceExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		17BBB7572D62860D002089E8 /* Rain Bounty IOS */ = {
@@ -45,6 +88,14 @@
 			path = "Rain Bounty IOSUITests";
 			sourceTree = "<group>";
 		};
+		17C9F8B63053AB2300F3C0FA /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				17C9F8BD3053AB2300F3C0FA /* Exceptions for "OneSignalNotificationServiceExtension" folder in "OneSignalNotificationServiceExtension" target */,
+			);
+			path = OneSignalNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +103,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17C9F8AE3053AAAD00F3C0FA /* OneSignalInAppMessages in Frameworks */,
+				17C9F8AC3053AAAD00F3C0FA /* OneSignalFramework in Frameworks */,
+				17C9F8B03053AAAD00F3C0FA /* OneSignalLocation in Frameworks */,
+				17C9F8AA3053AAAD00F3C0FA /* OneSignalExtension in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,15 +124,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17C9F8B23053AB2300F3C0FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17C9F8C43053ABDE00F3C0FA /* OneSignalExtension in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		17BBB74C2D62860D002089E8 = {
 			isa = PBXGroup;
 			children = (
+				17C9F8A730539B3100F3C0FA /* Rain-Bounty-Info.plist */,
+				17C9F8A630539B2100F3C0FA /* Rain Bounty.entitlements */,
 				17BBB7572D62860D002089E8 /* Rain Bounty IOS */,
 				17BBB7682D62860E002089E8 /* Rain Bounty IOSTests */,
 				17BBB7722D62860E002089E8 /* Rain Bounty IOSUITests */,
+				17C9F8B63053AB2300F3C0FA /* OneSignalNotificationServiceExtension */,
+				17C9F8C23053ABDE00F3C0FA /* Frameworks */,
 				17BBB7562D62860D002089E8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,8 +155,16 @@
 				17BBB7552D62860D002089E8 /* Rain Bounty.app */,
 				17BBB7652D62860E002089E8 /* Rain Bounty IOSTests.xctest */,
 				17BBB76F2D62860E002089E8 /* Rain Bounty IOSUITests.xctest */,
+				17C9F8B53053AB2300F3C0FA /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		17C9F8C23053ABDE00F3C0FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,16 +177,22 @@
 				17BBB7512D62860D002089E8 /* Sources */,
 				17BBB7522D62860D002089E8 /* Frameworks */,
 				17BBB7532D62860D002089E8 /* Resources */,
+				17C9F8C13053AB2300F3C0FA /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				17C9F8BB3053AB2300F3C0FA /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				17BBB7572D62860D002089E8 /* Rain Bounty IOS */,
 			);
 			name = "Rain Bounty";
 			packageProductDependencies = (
+				17C9F8A93053AAAD00F3C0FA /* OneSignalExtension */,
+				17C9F8AB3053AAAD00F3C0FA /* OneSignalFramework */,
+				17C9F8AD3053AAAD00F3C0FA /* OneSignalInAppMessages */,
+				17C9F8AF3053AAAD00F3C0FA /* OneSignalLocation */,
 			);
 			productName = "Rain Bounty IOS";
 			productReference = 17BBB7552D62860D002089E8 /* Rain Bounty.app */;
@@ -163,6 +244,29 @@
 			productReference = 17BBB76F2D62860E002089E8 /* Rain Bounty IOSUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		17C9F8B43053AB2300F3C0FA /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17C9F8BE3053AB2300F3C0FA /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				17C9F8B13053AB2300F3C0FA /* Sources */,
+				17C9F8B23053AB2300F3C0FA /* Frameworks */,
+				17C9F8B33053AB2300F3C0FA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				17C9F8B63053AB2300F3C0FA /* OneSignalNotificationServiceExtension */,
+			);
+			name = OneSignalNotificationServiceExtension;
+			packageProductDependencies = (
+				17C9F8C33053ABDE00F3C0FA /* OneSignalExtension */,
+			);
+			productName = OneSignalNotificationServiceExtension;
+			productReference = 17C9F8B53053AB2300F3C0FA /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -170,7 +274,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1620;
+				LastSwiftUpdateCheck = 2660;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					17BBB7542D62860D002089E8 = {
@@ -184,6 +288,9 @@
 						CreatedOnToolsVersion = 16.2;
 						TestTargetID = 17BBB7542D62860D002089E8;
 					};
+					17C9F8B43053AB2300F3C0FA = {
+						CreatedOnToolsVersion = 26.6;
+					};
 				};
 			};
 			buildConfigurationList = 17BBB7502D62860D002089E8 /* Build configuration list for PBXProject "Rain Bounty IOS" */;
@@ -195,6 +302,9 @@
 			);
 			mainGroup = 17BBB74C2D62860D002089E8;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				17C9F8A83053AAAD00F3C0FA /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 17BBB7562D62860D002089E8 /* Products */;
 			projectDirPath = "";
@@ -203,6 +313,7 @@
 				17BBB7542D62860D002089E8 /* Rain Bounty */,
 				17BBB7642D62860E002089E8 /* Rain Bounty IOSTests */,
 				17BBB76E2D62860E002089E8 /* Rain Bounty IOSUITests */,
+				17C9F8B43053AB2300F3C0FA /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -223,6 +334,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		17BBB76D2D62860E002089E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17C9F8B33053AB2300F3C0FA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,6 +371,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17C9F8B13053AB2300F3C0FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -265,6 +390,11 @@
 			isa = PBXTargetDependency;
 			target = 17BBB7542D62860D002089E8 /* Rain Bounty */;
 			targetProxy = 17BBB7702D62860E002089E8 /* PBXContainerItemProxy */;
+		};
+		17C9F8BB3053AB2300F3C0FA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17C9F8B43053AB2300F3C0FA /* OneSignalNotificationServiceExtension */;
+			targetProxy = 17C9F8BA3053AB2300F3C0FA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -393,12 +523,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Rain Bounty.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Rain Bounty IOS/Preview Content\"";
-				DEVELOPMENT_TEAM = WRGW92PDFC;
+				DEVELOPMENT_TEAM = UU8RSQ8SMZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Rain-Bounty-Info.plist";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app requires location info to provide accurate rain water harvesting historical trends and forecast";
 				INFOPLIST_KEY_NSLocationUsageDescription = "This app requires location info to provide accurate rain water harvesting historical trends and forecast";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires location info to provide accurate rain water harvesting historical trends and forecast";
@@ -426,12 +558,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Rain Bounty.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Rain Bounty IOS/Preview Content\"";
-				DEVELOPMENT_TEAM = WRGW92PDFC;
+				DEVELOPMENT_TEAM = UU8RSQ8SMZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Rain-Bounty-Info.plist";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app requires location info to provide accurate rain water harvesting historical trends and forecast";
 				INFOPLIST_KEY_NSLocationUsageDescription = "This app requires location info to provide accurate rain water harvesting historical trends and forecast";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires location info to provide accurate rain water harvesting historical trends and forecast";
@@ -522,6 +656,64 @@
 			};
 			name = Release;
 		};
+		17C9F8BF3053AB2300F3C0FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UU8RSQ8SMZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OneSignalNotificationServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.suryas.Rain-Bounty-IOS.OneSignalNotificationServiceExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		17C9F8C03053AB2300F3C0FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UU8RSQ8SMZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OneSignalNotificationServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.suryas.Rain-Bounty-IOS.OneSignalNotificationServiceExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -561,7 +753,55 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		17C9F8BE3053AB2300F3C0FA /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17C9F8BF3053AB2300F3C0FA /* Debug */,
+				17C9F8C03053AB2300F3C0FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		17C9F8A83053AAAD00F3C0FA /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OneSignal/OneSignal-XCFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		17C9F8A93053AAAD00F3C0FA /* OneSignalExtension */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17C9F8A83053AAAD00F3C0FA /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignalExtension;
+		};
+		17C9F8AB3053AAAD00F3C0FA /* OneSignalFramework */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17C9F8A83053AAAD00F3C0FA /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignalFramework;
+		};
+		17C9F8AD3053AAAD00F3C0FA /* OneSignalInAppMessages */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17C9F8A83053AAAD00F3C0FA /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignalInAppMessages;
+		};
+		17C9F8AF3053AAAD00F3C0FA /* OneSignalLocation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17C9F8A83053AAAD00F3C0FA /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignalLocation;
+		};
+		17C9F8C33053ABDE00F3C0FA /* OneSignalExtension */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17C9F8A83053AAAD00F3C0FA /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignalExtension;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 17BBB74D2D62860D002089E8 /* Project object */;
 }
